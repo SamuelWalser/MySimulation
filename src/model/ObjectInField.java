@@ -4,10 +4,10 @@ import controller.Simulation;
 import processing.core.PApplet;
 
 
-public class ObjectInField extends Simulation {
+public abstract class ObjectInField  {
 	
-	int xPosition;
-	int yPosition;
+	float xPosition;
+	float yPosition;
 	
 	Shape shape;
 	
@@ -19,7 +19,7 @@ public class ObjectInField extends Simulation {
 	 * @param yPosition
 	 * @param color
 	 */
-	public ObjectInField(PApplet window, int xPos, int yPos, Shape shape) {
+	public ObjectInField(PApplet window, float xPos, float yPos, Shape shape) {
 		this.window = window;
 		xPosition = xPos;
 		yPosition = yPos;
@@ -40,7 +40,7 @@ public class ObjectInField extends Simulation {
 	/**
 	 * @return the xPosition
 	 */
-	public int getxPosition() {
+	public float getxPosition() {
 		return xPosition;
 	}
 
@@ -48,7 +48,7 @@ public class ObjectInField extends Simulation {
 	/**
 	 * @return the yPosition
 	 */
-	public int getyPosition() {
+	public float getyPosition() {
 		return yPosition;
 	}
 
@@ -70,5 +70,8 @@ public class ObjectInField extends Simulation {
 		
 	}
 	
+	
+	
+		
 
 }

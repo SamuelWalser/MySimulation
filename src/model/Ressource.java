@@ -3,13 +3,14 @@ package model;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
+import controller.*;
 
 
 public class Ressource extends ObjectInField{
 	String type;
-	double amount;
+	float amount;
 	
-	public Ressource(PApplet window, int xPos, int yPos, Shape shape, String type, double amount) {
+	public Ressource(PApplet window, float xPos, float yPos, Shape shape, String type, float amount) {
 		super(window, xPos, yPos, shape);
 		this.type = type;
 		this.amount = amount;
@@ -17,16 +18,18 @@ public class Ressource extends ObjectInField{
 		
 	}
 	
+	
+
 	@Override
 	public void drawWood() {
 		// window.text(type, getxPosition(), getyPosition());
 		
-		window.fill(wooden.getColor());
+		window.fill(0xA0522D00);
 		
 		window.rect(getxPosition(), getyPosition(), 50, 50);
 	}
 	public void drawStone() {
-		window.fill(stoned.getColor());
+		window.fill(0x69696955);
 		
 		window.rect(getxPosition(), getyPosition(), 50, 50);
 		
@@ -44,9 +47,17 @@ public class Ressource extends ObjectInField{
 	/**
 	 * @return the amount
 	 */
-	public double getAmount() {
+	public float getAmount() {
 		return amount;
 	}
+	
+	/**
+	 * zieht von der Grösse der Ressource 0.1 ab
+	 */
+	public float cutAmount(float amount) {
+		return this.amount-=0.1;
+	}
+
 	
 	
 

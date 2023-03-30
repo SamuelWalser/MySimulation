@@ -5,24 +5,18 @@ import processing.core.PApplet;
 public class Alive extends ObjectInField {
 	
 	private String name;
-	private double speed;
+	private float speed;
+	private float score;
 
-	public Alive(PApplet window, int xPos, int yPos, Shape shape, String name, double speed) {
+	public Alive(PApplet window, float xPos, float yPos, Shape shape, String name, float speed, float score) {
 		super(window, xPos, yPos, shape);
 		this.name = name;
 		this.speed = speed;
+		this.score = score;
 		
 	}
 	
-	public double getDistanceKingWood(King k, Ressource w1) {
-		double d = 0;
-		double a = abs(k.getxPosition() - w1.getxPosition());
-		double b = abs(k.getyPosition() - w1.getyPosition());
-
-		d = Math.sqrt(a * a + b * b);
-		return d;
-	}
-
+	
 	/**
 	 * @return the name
 	 */
@@ -33,7 +27,7 @@ public class Alive extends ObjectInField {
 	/**
 	 * @return the speed
 	 */
-	public double getSpeed() {
+	public float getSpeed() {
 		return speed;
 	}
 
@@ -44,6 +38,22 @@ public class Alive extends ObjectInField {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
+	
+	public float getScore() {
+		  return score;
+	}
+	  
+	/**
+	 * erhöht die gesammelte Ressourcenzahl um 0.1
+	 */
+	public float addScore(float score) {
+		return this.score+=0.1;
+	}
+
+
+	
 	
 	
 
