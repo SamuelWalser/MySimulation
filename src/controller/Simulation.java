@@ -27,6 +27,10 @@ public class Simulation extends PApplet {
 		PApplet.main("controller.Simulation");
 	}
 	
+//	public void setup() {
+//		frameRate(5);
+//	}
+	
 	public void settings() {
 		size(800, 600);
 		initGame();
@@ -69,7 +73,7 @@ public class Simulation extends PApplet {
 	 */
 	public void drawcounters() {
 		text("Wood: " + woodAmount, 20, 30);
-		text("Stone: " + stoneAmount, 80, 30);
+		text("Stone: " + stoneAmount, 200, 30);
 	}
 
 
@@ -84,15 +88,23 @@ public class Simulation extends PApplet {
 	
 	public void gathering() {
 		int i = 0;
+		int time = millis();
 		while (i < wood.size()) {
 			Ressource w = wood.get(i);
 			if (getDistanceKingWood(k, w) < 30) {
-				k.addScore(k.getScore()); // Ressourcencount von King erhöhen
-				woodAmount = k.getScore(); // Anzahl Ressourcen = Ressourcencount von King
-				w.cutAmount(w.getAmount());
-				if(w.getAmount() == 0) {
-					wood.remove(i);
-				}	
+				if (millis() > time + 1000) {
+					k.addScore(k.getScore()); // Ressourcencount von King erhöhen
+					woodAmount = k.getScore(); // Anzahl Ressourcen = Ressourcencount von King
+				
+				
+					System.out.println(w.getAmount());
+					if(w.getAmount() <= 0) {
+						wood.remove(i);
+					} else {
+						w.cutAmount(); // Anzahl von dem Ressourcenfeld abziehen
+					}
+					time = millis();
+				}
 			}
 			i++;
 		}

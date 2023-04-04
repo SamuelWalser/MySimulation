@@ -49,7 +49,7 @@ public class Alive extends ObjectInField {
 	 * erhöht die gesammelte Ressourcenzahl um 0.1
 	 */
 	public float addScore(float score) {
-		return this.score+=0.1;
+		return this.score+=0.1f;
 	}
 
 

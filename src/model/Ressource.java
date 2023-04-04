@@ -54,8 +54,8 @@ public class Ressource extends ObjectInField{
 	/**
 	 * zieht von der Grösse der Ressource 0.1 ab
 	 */
-	public float cutAmount(float amount) {
-		return this.amount-=0.1;
+	public void cutAmount() {
+		this.amount-=0.1f;
 	}
 
 	
