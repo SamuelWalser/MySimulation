@@ -127,7 +127,6 @@ public class Simulation extends PApplet {
 				}
 			}
 			i++;
-			
 		}
 		while (a < stone.size()) {
 			Resource s = stone.get(a);
