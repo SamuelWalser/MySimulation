@@ -78,6 +78,7 @@ public class Simulation extends PApplet {
 	
 	
 	
+	
 	/**
 	 * draws the counters for how many resources the player has
 	 */
