@@ -5,13 +5,14 @@ import processing.core.PApplet;
 public class Alive extends ObjectInField {
 	
 	private String name;
-	private float score;
+	private int scoreWood;
+	private int scoreStone;
 
-	public Alive(PApplet window, float xPos, float yPos, String name, float score) {
+	public Alive(PApplet window, float xPos, float yPos, String name, int scoreWood, int scoreStone) {
 		super(window, xPos, yPos);
 		this.name = name;
-		this.score = score;
-		
+		this.scoreWood = scoreWood;
+		this.scoreStone = scoreStone;
 	}
 	
 	/**
@@ -23,20 +24,33 @@ public class Alive extends ObjectInField {
 	
 	/**
 	 * 
-	 * @return the score
+	 * @return the scoreWood
 	 */
-	public float getScore() {
-		  return score;
+	public int getScoreWood() {
+		  return scoreWood;
+	}
+	
+	/**
+	 * 
+	 * @return the scoreStone
+	 */
+	public int getScoreStone() {
+		  return scoreStone;
 	}
 	  
 	/**
-	 * increase the amount of score 0.1
+	 * increase the amount of scoreWood with 1
 	 */
-	public float addScore(float score) {
-		return this.score+=0.1f;
+	public int addScoreWood(int scoreWood) {
+		return this.scoreWood+=1;
 	}
 
-
+	/**
+	 * increase the amount of scoreWood with 1
+	 */
+	public int addScoreStone(int scoreStone) {
+		return this.scoreStone+=1;
+	}
 	
 	
 	

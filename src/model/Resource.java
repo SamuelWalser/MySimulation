@@ -8,9 +8,9 @@ import controller.*;
 
 public class Resource extends ObjectInField {
 	String type;
-	float amount;
+	int amount;
 	
-	public Resource(PApplet window, float xPos, float yPos, String type, float amount) {
+	public Resource(PApplet window, float xPos, float yPos, String type, int amount) {
 		super(window, xPos, yPos);
 		this.type = type;
 		this.amount = amount;
@@ -43,15 +43,15 @@ public class Resource extends ObjectInField {
 	/**
 	 * @return the amount
 	 */
-	public float getAmount() {
+	public int getAmount() {
 		return amount;
 	}
 	
 	/**
-	 * removes 0.1 of the resource
+	 * removes 1 of the resource
 	 */
 	public void cutAmount() {
-		this.amount-=0.1f;
+		this.amount-=1;
 	}
 
 	

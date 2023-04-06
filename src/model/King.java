@@ -4,8 +4,8 @@ import processing.core.PApplet;
 
 public class King extends Alive implements Moveable {
 
-	public King(PApplet window, float xPos, float yPos,  String name, float score) {
-		super(window, xPos, yPos, name, score);
+	public King(PApplet window, float xPos, float yPos,  String name, int scoreWood, int scoreStone) {
+		super(window, xPos, yPos, name, scoreWood, scoreStone);
 		
 	}
 	

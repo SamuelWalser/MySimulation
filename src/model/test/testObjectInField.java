@@ -14,7 +14,7 @@ public class testObjectInField {
 	
 	@Before
 	public void setup() {
-		sut = new King(null, 300.4f, 200.4f, "King", 5);
+		sut = new King(null, 300.4f, 200.4f, "King", 5, 5);
 	}
 	
 	@Test

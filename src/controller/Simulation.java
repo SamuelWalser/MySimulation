@@ -19,8 +19,8 @@ public class Simulation extends PApplet {
 	ArrayList<Resource> wood;
 	ArrayList<Resource> stone;
 	
-	private float woodAmount = 0;
-	private float stoneAmount = 0;
+	private int woodAmount = 0;
+	private int stoneAmount = 0;
 
 	public static void main(String[] args) {
 		
@@ -61,18 +61,18 @@ public class Simulation extends PApplet {
 	
 	public void initGame() {
 		
-		k = new King(this, 100, 100, "King", 0);
+		k = new King(this, 100, 100, "King", 0, 0);
 		wood = new ArrayList<>();
 		stone = new ArrayList<>();
 		
 		
 		// add wood tiles 
 		for (int i = 0; i < 3; i++) {
-			wood.add(new Resource(this, random(200, 500), random(200, 500), "Wood", (float) 8.8));
+			wood.add(new Resource(this, random(200, 500), random(200, 500), "Wood", 60));
 		}
 		// add stone tiles
 		for (int i = 0; i < 3; i++) {
-			stone.add(new Resource(this, random(200, 500), random(200, 500), "Stone", (float) 8.8));
+			stone.add(new Resource(this, random(200, 500), random(200, 500), "Stone", 60));
 		}
 	}
 	
@@ -109,14 +109,16 @@ public class Simulation extends PApplet {
 		int i = 0;
 		int a = 0;
 		int time = millis();
-		while (i < wood.size()) {
+//		if(wood.size() > 0) {
+		while(i < wood.size()) {
 			Resource w = wood.get(i);
 			if (getDistanceKingResource(k, w) < 30) {
 				if (millis() < time + 1000) {
-					k.addScore(k.getScore()); // Ressourcencount von King erhöhen
-					woodAmount = k.getScore(); // Anzahl Ressourcen = Ressourcencount von King
-				
-				
+					if(w.getAmount() > 0) {
+						k.addScoreWood(k.getScoreWood()); // Ressourcencount von King erhöhen
+						woodAmount = k.getScoreWood(); // Anzahl Ressourcen = Ressourcencount von King
+					}
+					
 					System.out.println(w.getAmount());
 					if(w.getAmount() <= 0) {
 						wood.remove(i);
@@ -128,14 +130,16 @@ public class Simulation extends PApplet {
 			}
 			i++;
 		}
-		while (a < stone.size()) {
+//		if(stone.size() > 0) {
+		while(a < stone.size()) {
 			Resource s = stone.get(a);
 			if (getDistanceKingResource(k, s) < 30) {
 				if (millis() < time + 1000) {
-					k.addScore(k.getScore()); // Ressourcencount von King erhöhen
-					stoneAmount = k.getScore(); // Anzahl Ressourcen = Ressourcencount von King
-				
-				
+					if(s.getAmount() > 0) {
+						k.addScoreStone(k.getScoreStone()); // Ressourcencount von King erhöhen
+						stoneAmount = k.getScoreStone(); // Anzahl Ressourcen = Ressourcencount von King
+					}
+					
 					System.out.println(s.getAmount());
 					if(s.getAmount() <= 0) {
 						stone.remove(a);
@@ -147,6 +151,7 @@ public class Simulation extends PApplet {
 			}
 			a++;
 		}
+		
 	}
 	
 	

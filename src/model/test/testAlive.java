@@ -14,7 +14,7 @@ public class testAlive {
 	
 	@Before
 	public void setup() {
-		sut = new King(null, 300.4f, 200.4f, "King", 5);
+		sut = new King(null, 300.4f, 200.4f, "King", 5, 5);
 	}
 	
 	@Test
@@ -23,14 +23,26 @@ public class testAlive {
 	}
 	
 	@Test
-	public void testGetScore() {
-		assertEquals(5, sut.getScore(), 0.0);
+	public void testGetScoreWood() {
+		assertEquals(5, sut.getScoreWood(), 0);
 	}
 	
 	@Test
-	public void testAddScore() {
-		sut.addScore(5);
-		assertEquals(5.1f, sut.getScore(), 0.0);
+	public void testAddScoreWood() {
+		sut.addScoreWood(5);
+		assertEquals(6, sut.getScoreWood(), 0);
+
+	}
+	
+	@Test
+	public void testGetScoreStone() {
+		assertEquals(5, sut.getScoreStone(), 0);
+	}
+	
+	@Test
+	public void testAddScoreStone() {
+		sut.addScoreStone(5);
+		assertEquals(6, sut.getScoreStone(), 0);
 
 	}
 
