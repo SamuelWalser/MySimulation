@@ -5,13 +5,11 @@ import processing.core.PApplet;
 public class Alive extends ObjectInField {
 	
 	private String name;
-	private float speed;
 	private float score;
 
-	public Alive(PApplet window, float xPos, float yPos, Shape shape, String name, float speed, float score) {
-		super(window, xPos, yPos, shape);
+	public Alive(PApplet window, float xPos, float yPos, String name, float score) {
+		super(window, xPos, yPos);
 		this.name = name;
-		this.speed = speed;
 		this.score = score;
 		
 	}
@@ -23,30 +21,17 @@ public class Alive extends ObjectInField {
 	public String getName() {
 		return name;
 	}
-
-	/**
-	 * @return the speed
-	 */
-	public float getSpeed() {
-		return speed;
-	}
-
-	/**
-	 * Wenn König oder Minion Wood berühren zieht es ab
-	 */
-	public void getWood() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	
-	
+	/**
+	 * 
+	 * @return the score
+	 */
 	public float getScore() {
 		  return score;
 	}
 	  
 	/**
-	 * erhöht die gesammelte Ressourcenzahl um 0.1
+	 * increase the amount of score 0.1
 	 */
 	public float addScore(float score) {
 		return this.score+=0.1f;

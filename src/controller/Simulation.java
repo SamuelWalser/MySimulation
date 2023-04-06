@@ -7,29 +7,29 @@ import java.util.ArrayList;
 
 import model.*;
 
-
+/**
+ * the main Class and controller of everything
+ * @author samuw
+ *
+ */
 public class Simulation extends PApplet {
 	
 	public King k;
-	public Ressource w1;
-	public Ressource s1;
 	
-	ArrayList<Ressource> wood;
-	ArrayList<Ressource> stone;
-	public Shape wooden = new Shape(30, 30, 0xA0522D00);
-	public Shape stoned = new Shape(30, 30, 0x69696955);
-	public Shape king = new Shape(50, 40, 0x7F00FF00);
-	float woodAmount = 0;
-	float stoneAmount = 0;
+	ArrayList<Resource> wood;
+	ArrayList<Resource> stone;
+	
+	private float woodAmount = 0;
+	private float stoneAmount = 0;
 
 	public static void main(String[] args) {
 		
 		PApplet.main("controller.Simulation");
 	}
 	
-//	public void setup() {
-//		frameRate(5);
-//	}
+	public void setup() {
+		frameRate(5);
+	}
 	
 	public void settings() {
 		size(800, 600);
@@ -40,59 +40,80 @@ public class Simulation extends PApplet {
 		background(0XFFFFFFFF);
 		drawRessources();
 		k.drawKing();
-		drawcounters();
+		drawCounters();
 		gathering();
 	}
-	
-	public double getDistanceKingWood(King k, Ressource w1) {
+	/**
+	 * calculates the distance between the king and a resource
+	 * @param k
+	 * @param r
+	 * @return
+	 */
+	public double getDistanceKingResource(King k, Resource r) {
 		double d = 0;
-		double a = k.getxPosition() - w1.getxPosition();
-		double b = k.getyPosition() - w1.getyPosition();
+		double a = k.getxPosition() - r.getxPosition();
+		double b = k.getyPosition() - r.getyPosition();
 
 		d = sqrt((float) ((a * a) + (b * b)));
 		return d;
 	}
 	
+	
 	public void initGame() {
-		w1 = new Ressource(this, 500, 200, wooden, "Wood", (float) 8.8);
-		s1 = new Ressource(this, 300, 200, stoned, "Stone", (float) 8.8);
 		
-		k = new King(this, 100, 100, king, "King", 5, 0);
+		k = new King(this, 100, 100, "King", 0);
 		wood = new ArrayList<>();
+		stone = new ArrayList<>();
 		//wood.add(w1);
 		
+		// add wood tiles 
 		for (int i = 0; i < 3; i++) {
-			wood.add(new Ressource(this, random(200, 500), random(200, 500), wooden, "Wood", (float) 8.8));
+			wood.add(new Resource(this, random(200, 500), random(200, 500), "Wood", (float) 8.8));
+		}
+		// add stone tiles
+		for (int i = 0; i < 3; i++) {
+			stone.add(new Resource(this, random(200, 500), random(200, 500), "Stone", (float) 8.8));
 		}
 	}
 	
 	
 	
 	/**
-	 * Zeichnet die Anzeige für die gesammelten Ressourcen der ObjectInField
+	 * draws the counters for how many resources the player has
 	 */
-	public void drawcounters() {
+	public void drawCounters() {
 		text("Wood: " + woodAmount, 20, 30);
 		text("Stone: " + stoneAmount, 200, 30);
 	}
 
-
-
+	/**
+	 * draws the resources
+	 */
 	public void drawRessources() {
 		for (int i = 0; i < wood.size(); i++) {
-			Ressource w = wood.get(i);
+			Resource w = wood.get(i);
 			w.drawWood();
 		}
-		s1.drawStone();
+		for (int i = 0; i < stone.size(); i++) {
+			Resource s = stone.get(i);
+			s.drawStone();
+		}
+		
 	}
 	
+	/**
+	 * removes points from resources and 
+	 * adds points to the counter
+	 * if the king touches a resource-tile
+	 */
 	public void gathering() {
 		int i = 0;
+		int a = 0;
 		int time = millis();
 		while (i < wood.size()) {
-			Ressource w = wood.get(i);
-			if (getDistanceKingWood(k, w) < 30) {
-				if (millis() > time + 1000) {
+			Resource w = wood.get(i);
+			if (getDistanceKingResource(k, w) < 30) {
+				if (millis() < time + 1000) {
 					k.addScore(k.getScore()); // Ressourcencount von King erhöhen
 					woodAmount = k.getScore(); // Anzahl Ressourcen = Ressourcencount von King
 				
@@ -108,16 +129,35 @@ public class Simulation extends PApplet {
 			}
 			i++;
 		}
+		while (a < stone.size()) {
+			Resource s = stone.get(a);
+			if (getDistanceKingResource(k, s) < 30) {
+				if (millis() < time + 1000) {
+					k.addScore(k.getScore()); // Ressourcencount von King erhöhen
+					stoneAmount = k.getScore(); // Anzahl Ressourcen = Ressourcencount von King
+				
+				
+					System.out.println(s.getAmount());
+					if(s.getAmount() <= 0) {
+						stone.remove(a);
+					} else {
+						s.cutAmount(); // Anzahl von dem Ressourcenfeld abziehen
+					}
+					time = millis();
+				}
+			}
+			a++;
+		}
 	}
 	
 	
 	
 	
 	/**
-	 * Methode für die Bewegungen vom King
+	 * movement of the king
 	 */
 	public void keyPressed() {
-		// während des eigentlichen Spiels
+		// during the actual game
 		
 		switch (key) {
 		case 'w':
@@ -136,28 +176,6 @@ public class Simulation extends PApplet {
 		}
 	}
 	
-	
-	
-//	int time = millis();
-//	double res = w1.getAmount();
-//	if (w1.getAmount() > 0) {
-//		if (getDistanceKingWood(k, w1) < 30) {
-//			while (res > 0) {
-//				if (millis() > time + 1000) {
-//					res-=0.1;
-//					time = millis();
-//				}
-//			}
-//		}
-//	}
-//	
-//	int time = millis();
-//	if (getDistanceKingWood(k, w1) < 30) {
-//		if (millis() > time + 1000) {
-//			counter+=0.1;
-//			time = millis();
-//		}
-//	}
 
 }
 

@@ -2,7 +2,7 @@ package model;
 
 public interface Moveable {
 	
-		// Fähigkeiten
+		
 		public void moveDown();
 
 		public void moveUp();
@@ -10,10 +10,5 @@ public interface Moveable {
 		public void moveLeft();
 
 		public void moveRight();
-		
-		
-		
-		
-		
 		
 }

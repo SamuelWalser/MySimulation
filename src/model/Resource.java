@@ -6,21 +6,18 @@ import processing.core.PApplet;
 import controller.*;
 
 
-public class Ressource extends ObjectInField{
+public class Resource extends ObjectInField {
 	String type;
 	float amount;
 	
-	public Ressource(PApplet window, float xPos, float yPos, Shape shape, String type, float amount) {
-		super(window, xPos, yPos, shape);
+	public Resource(PApplet window, float xPos, float yPos, String type, float amount) {
+		super(window, xPos, yPos);
 		this.type = type;
 		this.amount = amount;
 		
 		
 	}
 	
-	
-
-	@Override
 	public void drawWood() {
 		// window.text(type, getxPosition(), getyPosition());
 		
@@ -28,6 +25,7 @@ public class Ressource extends ObjectInField{
 		
 		window.rect(getxPosition(), getyPosition(), 50, 50);
 	}
+	
 	public void drawStone() {
 		window.fill(0x69696955);
 		
@@ -52,7 +50,7 @@ public class Ressource extends ObjectInField{
 	}
 	
 	/**
-	 * zieht von der Grösse der Ressource 0.1 ab
+	 * removes 0.1 of the resource
 	 */
 	public void cutAmount() {
 		this.amount-=0.1f;
