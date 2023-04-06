@@ -9,7 +9,6 @@ public class King extends Alive implements Moveable {
 		
 	}
 	
-	
 	// abilities	
 	
 		public void moveDown(){
@@ -28,26 +27,12 @@ public class King extends Alive implements Moveable {
 			xPosition += 5;
 		}
 
-
-
 		public void drawKing() {
 			window.rectMode(window.CENTER);
 			window.noStroke();
 			window.fill(153,102,204);
 			window.rect(xPosition, yPosition, 50, 40, 7);
-			//window.text("K", x, y);
-//			window.noStroke();           // kreise haben keinen rand
-//			window.fill(255);
-//			window.circle(x+22, y, 40);
-//			window.circle(x-22, y, 40);
-//			window.fill(0);
-//			window.circle(x+22, y, 20);
-//			window.circle(x-22, y, 20);
 			
 		}
-
-		
-		
-		
 
 }

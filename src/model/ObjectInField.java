@@ -23,7 +23,6 @@ public abstract class ObjectInField  {
 		yPosition = yPos;
 		
 	}
-	
 
 	/**
 	 * @return the window
@@ -31,7 +30,7 @@ public abstract class ObjectInField  {
 	public PApplet getWindow() {
 		return window;
 	}
-
+	
 
 	/**
 	 * @return the xPosition
@@ -39,7 +38,7 @@ public abstract class ObjectInField  {
 	public float getxPosition() {
 		return xPosition;
 	}
-
+	
 
 	/**
 	 * @return the yPosition
@@ -47,7 +46,5 @@ public abstract class ObjectInField  {
 	public float getyPosition() {
 		return yPosition;
 	}
-	
-	
 
 }

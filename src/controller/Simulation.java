@@ -64,7 +64,7 @@ public class Simulation extends PApplet {
 		k = new King(this, 100, 100, "King", 0);
 		wood = new ArrayList<>();
 		stone = new ArrayList<>();
-		//wood.add(w1);
+		
 		
 		// add wood tiles 
 		for (int i = 0; i < 3; i++) {
@@ -150,13 +150,10 @@ public class Simulation extends PApplet {
 	}
 	
 	
-	
-	
 	/**
 	 * movement of the king
 	 */
 	public void keyPressed() {
-		// during the actual game
 		
 		switch (key) {
 		case 'w':
@@ -174,7 +171,6 @@ public class Simulation extends PApplet {
 			
 		}
 	}
-	
 
 }
 

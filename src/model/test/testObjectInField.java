@@ -12,7 +12,6 @@ public class testObjectInField {
 	
 	ObjectInField sut;
 	
-	
 	@Before
 	public void setup() {
 		sut = new King(null, 300.4f, 200.4f, "King", 5);

@@ -14,7 +14,6 @@ public class Alive extends ObjectInField {
 		
 	}
 	
-	
 	/**
 	 * @return the name
 	 */

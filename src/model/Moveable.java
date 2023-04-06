@@ -2,7 +2,6 @@ package model;
 
 public interface Moveable {
 	
-		
 		public void moveDown();
 
 		public void moveUp();

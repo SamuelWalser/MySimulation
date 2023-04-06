@@ -14,12 +14,10 @@ public class Resource extends ObjectInField {
 		super(window, xPos, yPos);
 		this.type = type;
 		this.amount = amount;
-		
-		
+				
 	}
 	
 	public void drawWood() {
-		// window.text(type, getxPosition(), getyPosition());
 		
 		window.fill(0xA0522D00);
 		
